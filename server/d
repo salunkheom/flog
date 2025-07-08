@@ -1,0 +1,29 @@
+function Prof() {
+    const location = useLocation();
+    // Access userEmail passed from Login component via navigation state
+    const userEmail = location.state?.userEmail;
+    // Placeholder for user role - in a real app, this would come from backend or context
+    const userRole = "Member";
+
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 font-inter p-4">
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-md w-full">
+                <h1 className="text-3xl font-bold text-gray-800 mb-4">User Profile</h1>
+                {userEmail ? (
+                    <>
+                        <p className="text-lg text-gray-700 mb-2"><strong>Email ID:</strong> <span className="font-semibold text-blue-600">{userEmail}</span></p>
+                        <p className="text-lg text-gray-700 mb-6"><strong>Role:</strong> {userRole}</p>
+                    </>
+                ) : (
+                    <p className="text-lg text-red-600 mb-6">No user email found. Please log in.</p>
+                )}
+                <Link
+                    to="/"
+                    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition duration-300 ease-in-out shadow-md"
+                >
+                    Go back to Login
+                </Link>
+            </div>
+        </div>
+    );
+}
